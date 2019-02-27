@@ -40,7 +40,7 @@ public class NotesProvider extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         return database.query(DBOpenHelper.TABLE_NOTES, DBOpenHelper.ALL_COLUMNS, selection, null, null, null,
-                DBOpenHelper.NOTE_CREATED + "DESC");
+                DBOpenHelper.NOTE_CREATED + " DESC");
     }
 
     @Nullable
