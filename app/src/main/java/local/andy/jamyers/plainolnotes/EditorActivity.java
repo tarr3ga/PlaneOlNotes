@@ -70,6 +70,9 @@ public class EditorActivity extends AppCompatActivity {
             case android.R.id.home:
                 finishEditing();
                 break;
+            case R.id.action_delete:
+                deleteNote();
+                break;
         }
 
 
@@ -100,6 +103,12 @@ public class EditorActivity extends AppCompatActivity {
         }
 
     private void deleteNote() {
+        getContentResolver().delete(NotesProvider.CONTENT_URI, noteFilter, null);
+
+        Toast.makeText(this, getString(R.string.note_deleted), Toast.LENGTH_SHORT).show();
+
+        setResult(RESULT_OK);
+        finish();
     }
 
 
