@@ -21,6 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_action_add"
-        android:onClick="openEditorForNewNote" />
+        android:onClick="openEditorForNewNote"
+        android:layout_margin="20px"/>
 
 </android.support.constraint.ConstraintLayout>
