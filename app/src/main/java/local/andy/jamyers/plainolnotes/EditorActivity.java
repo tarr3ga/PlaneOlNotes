@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class EditorActivity extends AppCompatActivity {
 
@@ -49,19 +50,9 @@ public class EditorActivity extends AppCompatActivity {
             editor.setText(oldText);
             editor.requestFocus();
         }
-
-        //Todo :  Find out how to get back button on title bar
-
-        /*FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
+    //Todo :  Find out how to get back button on title bar
     /* Todo: Fix toolbar.  Does not show up */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,23 +77,44 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     private void finishEditing() {
-        String new_text = editor.getText().toString().trim();
+        String newText = editor.getText().toString().trim();
 
         switch(action){
             case Intent.ACTION_INSERT:
-                if(new_text.length() == 0){
+                if(newText.length() == 0){
                     setResult(RESULT_CANCELED);
                 } else {
-                    insertNote(new_text);
+                    insertNote(newText);
                 }
+                break;
+            case Intent.ACTION_EDIT:
+                if(newText.length() == 0) {
+                    deleteNote();
+                } else if(oldText.equals(newText)){
+                    setResult(RESULT_CANCELED);
+                } else {
+                    updateNote(newText);
+                }
+            }
+            finish();
         }
-        finish();
+
+    private void deleteNote() {
     }
+
 
     private void insertNote(String noteText) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.NOTE_TEXT, noteText);
         getContentResolver().insert(NotesProvider.CONTENT_URI, values);
+        setResult(RESULT_OK);
+    }
+
+    private void updateNote(String noteText) {
+        ContentValues values = new ContentValues();
+        values.put(DBOpenHelper.NOTE_TEXT, noteText);
+        getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
+        Toast.makeText(this, getString(R.string.note_updated), Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
     }
 
