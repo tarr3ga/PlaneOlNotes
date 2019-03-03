@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="local.andy.jamyers.plainolnotes.EditorActivity">
 
 
     <EditText
@@ -13,24 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top"
-        android:inputType="textMultiLine|textCapSentences" />
-
-    <!--<android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />-->
-
-    <!--<android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_anchor="@+id/editText"
-        app:layout_anchorGravity="right|bottom"
-        app:srcCompat="@mipmap/ic_launcher" />-->
-
+        android:inputType="textMultiLine|textCapSentences"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:hint="@string/enter_note_here" />
 </android.support.design.widget.CoordinatorLayout>
 
