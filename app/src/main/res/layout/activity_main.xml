@@ -12,19 +12,15 @@
         android:layout_height="match_parent"></ListView>
 
 
-
-    <Button
-        android:id="@+id/button"
+    <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="openEditorForNewNote"
-        android:text="New Note"
+        android:clickable="true"
         app:layout_anchor="@+id/editText"
         app:layout_anchorGravity="right|bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_action_add"
+        android:onClick="openEditorForNewNote" />
 
 </android.support.constraint.ConstraintLayout>
