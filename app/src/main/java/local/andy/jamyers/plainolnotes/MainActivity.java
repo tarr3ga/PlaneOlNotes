@@ -11,14 +11,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -33,7 +31,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        InsertNote("New Note");
+        setTitle(R.string.app_name);
 
         String[] from = {DBOpenHelper.NOTE_TEXT};
         int [] to = {R.id.tvNote};
@@ -60,7 +58,6 @@ implements LoaderManager.LoaderCallbacks<Cursor>
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.NOTE_TEXT, noteText);
         Uri noteUri = getContentResolver().insert(NotesProvider.CONTENT_URI, values);
-        Log.d("MainActivity", "Inserted note" + noteUri.getLastPathSegment());
     }
 
     @Override
