@@ -5,4 +5,5 @@
     <string name="all_deleted">All Deleted</string>
     <string name="title_activity_editor">EditorActivity</string>
     <string name="new_note">New note</string>
+    <string name="action_delete">Delete</string>
 </resources>
